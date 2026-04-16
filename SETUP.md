@@ -1,4 +1,4 @@
-# Local Setup Guide
+# CampusMarks Console Setup
 
 ## What You Need
 
@@ -7,15 +7,15 @@
 - Node.js 20 or later
 - npm 8 or later
 
-## Two Run Modes
+## Runtime Choices
 
-### Option 1. Fast Local Dev
+### Option 1. Quick Development Mode
 
-This uses the backend `dev` profile with embedded H2, so MySQL is not required.
+This profile uses the embedded H2 database, so you can run the backend without preparing MySQL first.
 
-### Option 2. Full MySQL Mode
+### Option 2. MySQL-Backed Mode
 
-This uses the default backend configuration and the MySQL script in `backend/schema-and-data.sql`.
+This path keeps MySQL as the main database and uses the script in `backend/schema-and-data.sql`.
 
 ## Install Commands
 
@@ -33,7 +33,7 @@ Set-Location -LiteralPath "e:\Web Dev using Java\Project [College class]\fronten
 npm install --cache .npm-cache
 ```
 
-### Backend build check
+### Backend verification
 
 ```powershell
 Set-Location -LiteralPath "e:\Web Dev using Java\Project [College class]\backend"
@@ -49,27 +49,27 @@ Set-Location -LiteralPath "e:\Web Dev using Java\Project [College class]\backend
 mvn spring-boot:run -Dspring-boot.run.profiles=dev
 ```
 
-Backend URLs:
+Available backend endpoints:
 
 - API: `http://localhost:8080/api`
 - H2 Console: `http://localhost:8080/h2-console`
 - Swagger UI: `http://localhost:8080/swagger-ui.html`
 
-H2 login values:
+H2 console values:
 
 - JDBC URL: `jdbc:h2:mem:studentdb`
 - Username: `sa`
 - Password: leave blank
 
-### Backend with MySQL
+### Backend using MySQL
 
-1. Create the database and seed data:
+1. Create the database and load the starter records:
 
 ```sql
 SOURCE backend/schema-and-data.sql;
 ```
 
-2. Update `backend/src/main/resources/application.properties` if your MySQL username or password differs.
+2. If needed, adjust `backend/src/main/resources/application.properties` for your local MySQL username or password.
 
 3. Run the backend:
 
@@ -89,16 +89,16 @@ Frontend URL:
 
 - `http://localhost:5173`
 
-## One-Command Helper
+## Optional Helper Script
 
-After Maven and npm dependencies are installed, you can start both apps with:
+Once Maven and npm dependencies are available, you can launch both apps with:
 
 ```powershell
 Set-Location -LiteralPath "e:\Web Dev using Java\Project [College class]"
 .\start-dev.ps1
 ```
 
-## Current API Groups
+## API Endpoints
 
 ### Authentication
 
@@ -116,11 +116,11 @@ Set-Location -LiteralPath "e:\Web Dev using Java\Project [College class]"
 - `GET /api/analytics/department-averages`
 - `GET /api/analytics/attendance-performance`
 
-## If Something Fails
+## Troubleshooting
 
 ### `mvn` not found
 
-Install Maven and make sure it is added to `PATH`.
+Install Maven and confirm that it is available in `PATH`.
 
 Suggested manual flow:
 
@@ -133,19 +133,19 @@ Suggested manual flow:
 mvn -v
 ```
 
-If that works, the backend commands in this file will work too.
+If that command succeeds, the backend commands in this guide should work as well.
 
 ### npm install fails
 
-Check internet access and rerun `npm install`.
+Check internet access, then run the install command again.
 
 ### frontend cannot reach backend
 
-Make sure backend is running on port `8080`.
+Confirm that the backend is active on port `8080`.
 
 ### MySQL mode fails
 
-Verify:
+Check the following:
 
 - MySQL server is running
 - database exists
@@ -155,6 +155,6 @@ Verify:
 
 - The frontend is already configured to call `http://localhost:8080/api`.
 - The backend allows CORS from `http://localhost:5173`.
-- The `dev` profile is the easiest local startup path.
-- The frontend dependency install and production build were verified successfully in this workspace.
-- Default admin login for local development is `admin / admin123`.
+- The `dev` profile is the simplest local startup path.
+- The frontend dependency install and production build were already verified in this workspace.
+- The default local administrator login is `admin / admin123`.

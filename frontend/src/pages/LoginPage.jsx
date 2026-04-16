@@ -39,9 +39,9 @@ export default function LoginPage() {
   return (
     <section className="page-content">
       <PageHeader
-        eyebrow="Admin Access"
-        title="Login to manage records"
-        description="Analytics remain public, but adding, editing, and deleting student records now requires a JWT-backed admin session."
+        eyebrow="Administrator Access"
+        title="Login to edit records"
+        description="The summary pages are viewable without a session, but data changes require a signed administrator token."
       />
 
       {error ? <div className="error-banner">{error}</div> : null}
@@ -58,7 +58,7 @@ export default function LoginPage() {
         </label>
 
         <div className="login-note">
-          Default local credentials: <strong>admin / admin123</strong>
+          Local development credentials: <strong>admin / admin123</strong>
         </div>
 
         <div className="form-actions">

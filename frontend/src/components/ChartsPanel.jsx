@@ -17,7 +17,7 @@ const departmentColors = ["#134074", "#ef8354", "#0b6e4f", "#8f2d56", "#6c757d"]
 export function DepartmentChart({ data }) {
   return (
     <div className="chart-card">
-      <h3>Department Performance</h3>
+      <h3>Branch Comparison</h3>
       <ResponsiveContainer width="100%" height={280}>
         <BarChart data={data}>
           <CartesianGrid strokeDasharray="3 3" />
@@ -39,7 +39,7 @@ export function DepartmentChart({ data }) {
 export function AttendanceScatterChart({ data }) {
   return (
     <div className="chart-card">
-      <h3>Attendance vs Average Marks</h3>
+      <h3>Attendance and Mean Score</h3>
       <ResponsiveContainer width="100%" height={280}>
         <ScatterChart>
           <CartesianGrid strokeDasharray="3 3" />

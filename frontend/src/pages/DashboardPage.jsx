@@ -37,20 +37,20 @@ export default function DashboardPage() {
     <section className="page-content">
       <PageHeader
         eyebrow="Overview"
-        title="Academic performance dashboard"
-        description="A quick view of student outcomes, class trends, and risk indicators."
+        title="Academic summary board"
+        description="A single-screen snapshot of class results, branch trends, and students who may need attention."
       />
 
       {error ? <div className="error-banner">{error}</div> : null}
 
       <div className="metrics-grid">
-        <MetricCard label="Total Students" value={summary?.totalStudents ?? "--"} />
-        <MetricCard label="Class Average" value={summary ? `${summary.classAverage}` : "--"} />
-        <MetricCard label="At-Risk Students" value={summary?.atRiskCount ?? "--"} />
+        <MetricCard label="Student Count" value={summary?.totalStudents ?? "--"} />
+        <MetricCard label="Overall Average" value={summary ? `${summary.classAverage}` : "--"} />
+        <MetricCard label="Support Watchlist" value={summary?.atRiskCount ?? "--"} />
         <MetricCard
-          label="Top Performer"
+          label="Highest Scorer"
           value={topper?.name ?? "--"}
-          hint={topper ? `Average ${topper.averageMarks}` : "Waiting for analytics"}
+          hint={topper ? `Mean score ${topper.averageMarks}` : "Waiting for score summary"}
         />
       </div>
 

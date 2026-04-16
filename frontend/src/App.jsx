@@ -22,19 +22,19 @@ export default function App() {
     <div className="app-shell">
       <aside className="sidebar">
         <div>
-          <p className="eyebrow">Capstone Project</p>
-          <h1>Student Performance Analysis</h1>
+          <p className="eyebrow">Academic Console</p>
+          <h1>CampusMarks Console</h1>
           <p className="sidebar-copy">
-            Track academic performance, identify at-risk students, and compare
-            department outcomes from one admin dashboard.
+            Review marks, attendance, and branch-level trends through one
+            compact academic monitoring workspace.
           </p>
 
           <div className="auth-panel">
             <p className="auth-title">{isAuthenticated ? "Signed In" : "Read-Only Mode"}</p>
             <p className="auth-copy">
               {isAuthenticated
-                ? `${user.username} can create, update, and delete records.`
-                : "Login as admin to manage student data."}
+                ? `${user.username} can maintain records and update the dataset.`
+                : "Sign in as administrator to change data entries."}
             </p>
             {isAuthenticated ? (
               <button type="button" className="secondary-button" onClick={logout}>

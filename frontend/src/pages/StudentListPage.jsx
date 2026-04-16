@@ -40,7 +40,7 @@ export default function StudentListPage() {
       setStudents((currentStudents) => currentStudents.filter((student) => student.id !== studentId));
     } catch (deleteError) {
       if (deleteError.status === 401 || deleteError.status === 403) {
-        setError("Admin login is required to delete student records.");
+        setError("Administrator login is required before deleting an entry.");
         return;
       }
       setError(deleteError.message);
@@ -51,16 +51,16 @@ export default function StudentListPage() {
     <section className="page-content">
       <PageHeader
         eyebrow="Records"
-        title="Student records"
-        description="Manage academic records and quickly identify where performance attention is needed."
+        title="Academic register"
+        description="Browse, filter, and maintain the score sheet used by the reporting screens."
         actions={
           isAuthenticated ? (
             <Link to="/students/new" className="primary-button">
-              Add Student
+              Add Entry
             </Link>
           ) : (
             <Link to="/login" className="primary-button">
-              Login For Edit Access
+              Login For Editing
             </Link>
           )
         }
@@ -69,7 +69,7 @@ export default function StudentListPage() {
       <div className="toolbar">
         <input
           className="search-input"
-          placeholder="Search by student name"
+          placeholder="Search by name"
           value={searchTerm}
           onChange={(event) => setSearchTerm(event.target.value)}
         />

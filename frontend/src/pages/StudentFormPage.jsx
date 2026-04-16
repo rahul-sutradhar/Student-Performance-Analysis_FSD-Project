@@ -82,12 +82,12 @@ export default function StudentFormPage({ mode }) {
     <section className="page-content">
       <PageHeader
         eyebrow={mode === "edit" ? "Update" : "Create"}
-        title={mode === "edit" ? "Edit student record" : "Add student record"}
-        description="Capture marks and attendance to keep the analytics accurate."
+        title={mode === "edit" ? "Edit academic entry" : "Add academic entry"}
+        description="Enter marks and attendance carefully so the summary pages reflect the latest classroom data."
       />
 
       {!isAuthenticated ? (
-        <div className="error-banner">You must be logged in as admin to manage student records.</div>
+        <div className="error-banner">Administrator access is required to modify academic entries.</div>
       ) : null}
 
       {pageError ? <div className="error-banner">{pageError}</div> : null}
@@ -98,7 +98,7 @@ export default function StudentFormPage({ mode }) {
         submitting={submitting}
         onChange={handleChange}
         onSubmit={handleSubmit}
-        submitLabel={mode === "edit" ? "Update Student" : "Create Student"}
+        submitLabel={mode === "edit" ? "Update Entry" : "Create Entry"}
       />
     </section>
   );

@@ -15,7 +15,7 @@
     <artifactId>backend</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>student-performance-backend</name>
-    <description>Student Performance Analysis backend</description>
+    <description>CampusMarks Console backend service</description>
 
     <properties>
         <java.version>17</java.version>
