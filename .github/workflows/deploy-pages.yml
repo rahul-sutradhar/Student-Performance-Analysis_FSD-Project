@@ -39,6 +39,10 @@ jobs:
         env:
           VITE_API_BASE_URL: ${{ secrets.VITE_API_BASE_URL || '' }}
         run: npm run build
+        
+      - name: Build backend
+        working-directory: backend
+        run: mvn spring-boot:run "-Dspring-boot.run.profiles=dev"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
