@@ -1,7 +1,7 @@
 // Mock data for demo/offline mode
 export const MOCK_STUDENTS = [
   {
-    recordId: 1,
+    id: 1,
     name: "Amit Sharma",
     department: "CS",
     math: 78,
@@ -10,7 +10,7 @@ export const MOCK_STUDENTS = [
     attendance: 92
   },
   {
-    recordId: 2,
+    id: 2,
     name: "Riya Verma",
     department: "CS",
     math: 88,
@@ -19,7 +19,7 @@ export const MOCK_STUDENTS = [
     attendance: 90
   },
   {
-    recordId: 3,
+    id: 3,
     name: "Karan Patil",
     department: "IT",
     math: 65,
@@ -28,7 +28,7 @@ export const MOCK_STUDENTS = [
     attendance: 80
   },
   {
-    recordId: 4,
+    id: 4,
     name: "Pooja Nair",
     department: "IT",
     math: 92,
@@ -37,7 +37,7 @@ export const MOCK_STUDENTS = [
     attendance: 96
   },
   {
-    recordId: 5,
+    id: 5,
     name: "Rahul Singh",
     department: "CS",
     math: 55,
@@ -46,7 +46,7 @@ export const MOCK_STUDENTS = [
     attendance: 70
   },
   {
-    recordId: 6,
+    id: 6,
     name: "Sneha Kulkarni",
     department: "ENTC",
     math: 74,
@@ -55,7 +55,7 @@ export const MOCK_STUDENTS = [
     attendance: 88
   },
   {
-    recordId: 7,
+    id: 7,
     name: "Arjun Deshmukh",
     department: "MECHANICAL",
     math: 61,
@@ -64,7 +64,7 @@ export const MOCK_STUDENTS = [
     attendance: 68
   },
   {
-    recordId: 8,
+    id: 8,
     name: "Neha Joshi",
     department: "CIVIL",
     math: 83,
@@ -95,7 +95,7 @@ export const mockApiService = {
   // Get student by ID
   async getStudent(id) {
     await new Promise(resolve => setTimeout(resolve, 200));
-    const student = MOCK_STUDENTS.find(s => s.recordId === parseInt(id));
+    const student = MOCK_STUDENTS.find(s => s.id === parseInt(id));
     if (!student) throw new Error("Student not found");
     return student;
   },
@@ -105,7 +105,7 @@ export const mockApiService = {
     await new Promise(resolve => setTimeout(resolve, 300));
     const newStudent = {
       ...student,
-      recordId: Math.max(...MOCK_STUDENTS.map(s => s.recordId)) + 1
+      id: Math.max(...MOCK_STUDENTS.map(s => s.id)) + 1
     };
     MOCK_STUDENTS.push(newStudent);
     return newStudent;
@@ -114,7 +114,7 @@ export const mockApiService = {
   // Update student
   async updateStudent(id, updates) {
     await new Promise(resolve => setTimeout(resolve, 300));
-    const index = MOCK_STUDENTS.findIndex(s => s.recordId === parseInt(id));
+    const index = MOCK_STUDENTS.findIndex(s => s.id === parseInt(id));
     if (index === -1) throw new Error("Student not found");
     MOCK_STUDENTS[index] = { ...MOCK_STUDENTS[index], ...updates };
     return MOCK_STUDENTS[index];
@@ -123,10 +123,10 @@ export const mockApiService = {
   // Delete student
   async deleteStudent(id) {
     await new Promise(resolve => setTimeout(resolve, 300));
-    const index = MOCK_STUDENTS.findIndex(s => s.recordId === parseInt(id));
+    const index = MOCK_STUDENTS.findIndex(s => s.id === parseInt(id));
     if (index === -1) throw new Error("Student not found");
     MOCK_STUDENTS.splice(index, 1);
-    return null;
+    return { success: true };
   },
 
   // Get insights
