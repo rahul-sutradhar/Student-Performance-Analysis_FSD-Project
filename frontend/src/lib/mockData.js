@@ -76,6 +76,12 @@ export const MOCK_STUDENTS = [
 
 export const MOCK_TOKEN = "demo-token-12345";
 
+// Helper function to calculate average score
+function calculateAverage(student) {
+  const scores = [student.math, student.science, student.programming];
+  return scores.reduce((a, b) => a + b, 0) / scores.length;
+}
+
 export const mockApiService = {
   // Login with mock token
   async login(username, password) {
@@ -129,14 +135,84 @@ export const mockApiService = {
     return { success: true };
   },
 
-  // Get insights
-  async getInsights() {
+  // Analytics: Get summary/overview
+  async getOverviewStats() {
     await new Promise(resolve => setTimeout(resolve, 300));
+    const allScores = MOCK_STUDENTS.flatMap(s => [s.math, s.science, s.programming]);
+    const classAverage = allScores.reduce((a, b) => a + b, 0) / allScores.length;
+    const atRiskCount = MOCK_STUDENTS.filter(s => calculateAverage(s) < 60).length;
+    
     return {
       totalStudents: MOCK_STUDENTS.length,
-      classAverage: 76.5,
-      topPerformer: "Pooja Nair",
-      supportWatchlist: 2
+      classAverage: Math.round(classAverage * 100) / 100,
+      atRiskCount
+    };
+  },
+
+  // Analytics: Get top performer
+  async getTopperStudent() {
+    await new Promise(resolve => setTimeout(resolve, 300));
+    let topStudent = MOCK_STUDENTS[0];
+    let topAverage = calculateAverage(topStudent);
+    
+    for (let student of MOCK_STUDENTS) {
+      const avg = calculateAverage(student);
+      if (avg > topAverage) {
+        topStudent = student;
+        topAverage = avg;
+      }
+    }
+    return topStudent;
+  },
+
+  // Analytics: Get students at risk
+  async getAtRiskStudents() {
+    await new Promise(resolve => setTimeout(resolve, 300));
+    return MOCK_STUDENTS.filter(s => calculateAverage(s) < 60);
+  },
+
+  // Analytics: Get department averages
+  async getDepartmentAverages() {
+    await new Promise(resolve => setTimeout(resolve, 300));
+    const departments = {};
+    
+    MOCK_STUDENTS.forEach(student => {
+      if (!departments[student.department]) {
+        departments[student.department] = [];
+      }
+      departments[student.department].push(calculateAverage(student));
+    });
+    
+    return Object.keys(departments).map(dept => ({
+      department: dept,
+      averageMarks: Math.round(
+        departments[dept].reduce((a, b) => a + b, 0) / departments[dept].length * 100
+      ) / 100
+    }));
+  },
+
+  // Analytics: Get attendance vs performance scatter plot
+  async getAttendancePerformance() {
+    await new Promise(resolve => setTimeout(resolve, 300));
+    return MOCK_STUDENTS.map(student => ({
+      studentId: student.id,
+      studentName: student.name,
+      attendance: student.attendance,
+      averageMarks: Math.round(calculateAverage(student) * 100) / 100
+    }));
+  },
+
+  // Get insights (legacy endpoint)
+  async getInsights() {
+    await new Promise(resolve => setTimeout(resolve, 300));
+    const stats = await this.getOverviewStats();
+    const topper = await this.getTopperStudent();
+    
+    return {
+      totalStudents: stats.totalStudents,
+      classAverage: stats.classAverage,
+      topPerformer: topper.name,
+      supportWatchlist: stats.atRiskCount
     };
   }
 };

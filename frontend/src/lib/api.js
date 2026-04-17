@@ -127,8 +127,20 @@ async function handleMockRequest(path, options, mockService) {
   }
   
   // Handle analytics endpoints
-  if (path.includes("/analytics")) {
-    return mockService.getInsights();
+  if (path.includes("/analytics/summary")) {
+    return mockService.getOverviewStats();
+  }
+  if (path.includes("/analytics/topper")) {
+    return mockService.getTopperStudent();
+  }
+  if (path.includes("/analytics/at-risk")) {
+    return mockService.getAtRiskStudents();
+  }
+  if (path.includes("/analytics/department-averages")) {
+    return mockService.getDepartmentAverages();
+  }
+  if (path.includes("/analytics/attendance-performance")) {
+    return mockService.getAttendancePerformance();
   }
   
   // Handle auth/me

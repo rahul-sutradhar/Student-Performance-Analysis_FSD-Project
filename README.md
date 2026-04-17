@@ -14,6 +14,7 @@ Full-stack Java FSD project for tracking student academic records, managing atte
 - Analytics views for topper, at-risk students, department averages, and attendance vs performance
 - Swagger/OpenAPI documentation
 - SQL setup script included for MySQL mode
+- **Demo mode with mock data** - Full functionality without backend, perfect for GitHub Pages deployment and testing
 
 ## Project Structure
 
@@ -112,7 +113,9 @@ http://localhost:5173
 
 GitHub Pages can host the React frontend only. The Spring Boot backend must be deployed separately on a platform that supports Java applications.
 
-Before deployment, set the production API URL:
+**Important:** The frontend will work on GitHub Pages using demo mode with mock data, even without deploying the backend. This means the full app (student management, add/edit/delete, analytics) is fully functional on GitHub Pages.
+
+Before deployment, set the production API URL (optional, only if deploying backend):
 
 ```text
 VITE_API_BASE_URL=https://your-backend-host/api
@@ -127,12 +130,49 @@ frontend/.env.example
 
 Deployment flow:
 
-1. Deploy the backend first and confirm the public API URL works.
-2. Add a GitHub repository secret named `VITE_API_BASE_URL` with your backend URL.
+1. *(Optional)* Deploy the backend first if you want to use real data instead of mock data.
+2. *(Optional)* Add a GitHub repository secret named `VITE_API_BASE_URL` with your backend URL.
 3. In repository settings, set GitHub Pages source to `GitHub Actions`.
 4. Push to `main` to trigger the frontend deployment workflow.
 
-The frontend uses hash-based routing so page refreshes work correctly on GitHub Pages.
+The frontend uses hash-based routing so page refreshes work correctly on GitHub Pages, and demo mode ensures full functionality without the backend.
+
+## Demo Mode (Mock Data)
+
+The frontend has a built-in demo mode that works completely offline using mock data. This is useful for testing the UI without running the backend, and is automatically used when deployed to GitHub Pages.
+
+**How it works:**
+
+- When the backend is unreachable (after a 5-second timeout), the app automatically switches to demo mode
+- All student records, add, edit, delete, and analytics operations work with mock data
+- Changes are stored in the browser's memory during the session (data resets on page refresh)
+- No authentication required for admin operations in demo mode
+
+**Default login for demo mode:**
+
+```text
+username: admin
+password: admin123
+```
+
+**What you can do in demo mode:**
+
+- Browse 8 sample students
+- Filter by department
+- Search by student name
+- Add new student records
+- Edit existing records
+- Delete records
+- View analytics dashboard with mock insights
+
+To test demo mode locally, you can start just the frontend without the backend:
+
+```bash
+cd frontend
+npm run dev
+```
+
+Wait 5 seconds, and the app will switch to demo mode automatically. On GitHub Pages, demo mode is used by default.
 
 ## API Endpoints
 
@@ -174,3 +214,5 @@ sql/schema-and-data.sql
 ## Notes
 
 The application supports read-only browsing for general users and protected write operations for authenticated administrators. The `dev` profile uses an in-memory H2 database for quick local startup, while the standard profile is intended for MySQL-backed execution. For deployment, the frontend reads its API base URL from `VITE_API_BASE_URL` and falls back to `http://localhost:8080/api` during local development.
+
+Demo mode provides a fully functional frontend for testing and showcase purposes without requiring backend deployment. The mock data includes 8 sample students across different departments with realistic performance metrics. Frontend changes made in demo mode are temporary and stored in browser memory only.
