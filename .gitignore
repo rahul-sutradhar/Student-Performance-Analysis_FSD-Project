@@ -1,4 +1,29 @@
+# Backend - Maven
 backend/target/
+backend/.mvn/
+backend/logs/
+backend/.idea/
+backend/*.iml
+.m2repo/
+
+# Frontend - Node.js
 frontend/node_modules/
 frontend/dist/
 frontend/.npm-cache/
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Logs
+*.log
+logs/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Environment
+.env
+.env.local
