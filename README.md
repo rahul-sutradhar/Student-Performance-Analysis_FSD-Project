@@ -206,6 +206,7 @@ npm run dev
 ```
 
 Wait 5 seconds, and the app will switch to demo mode automatically. On GitHub Pages, demo mode is used by default.
+For Demo Mode on GitHub: [View](https://rahul-sutradhar.github.io/Student-Performance-Analysis_FSD-Project/)
 
 ---
 
@@ -224,7 +225,6 @@ To verify the project in a few minutes:
 9. Open the Analytics page and review topper, branch comparison, attendance chart, and at-risk students
 10. Open Swagger UI at `http://localhost:8080/swagger-ui.html` and verify the documented endpoints
 
-For Demo Mode UI: [View](https://rahul-sutradhar.github.io/Student-Performance-Analysis_FSD-Project/)
 ---
 
 ## API overview
