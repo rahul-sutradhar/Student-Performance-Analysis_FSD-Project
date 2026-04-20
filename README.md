@@ -3,6 +3,7 @@
 A full-stack student performance analysis system for managing academic records, attendance, and performance insights. Built as a Java Full Stack Development college capstone project using Spring Boot, React, and MySQL.
 
 **Student:** Rahul Sutradhar &nbsp;|&nbsp; **Roll Number:** 24057057 &nbsp;|&nbsp; **Batch:** FSD with Java 2026
+
 **Mentor:** Mr. Umar Yakub Solanki, Technical Lead
 
 ---
