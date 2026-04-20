@@ -12,9 +12,27 @@ Full-stack Java FSD project for tracking student academic records, managing atte
 - Student list with branch and search filters
 - Add, edit, and delete student records
 - Analytics views for topper, at-risk students, department averages, and attendance vs performance
-- Swagger/OpenAPI documentation
+- Swagger documentation
 - SQL setup script included for MySQL mode
 - **Demo mode with mock data** - Full functionality without backend, perfect for GitHub Pages deployment and testing
+
+## Tech stack summary
+
+| Layer | Technology |
+|---|---|
+| Backend framework | Spring Boot 3.3.5 |
+| API style | REST with Spring MVC |
+| Persistence | Spring Data JPA / Hibernate |
+| Database | MySQL, H2 |
+| Security | Spring Security + JWT |
+| API docs | springdoc OpenAPI / Swagger UI |
+| Frontend | React 18 |
+| Build tool | Vite 5 |
+| Routing | React Router |
+| Charts | Recharts |
+| Package managers | Maven, npm |
+| Language versions | Java 17, modern JavaScript |
+
 
 ## Project Structure
 
@@ -174,21 +192,33 @@ npm run dev
 
 Wait 5 seconds, and the app will switch to demo mode automatically. On GitHub Pages, demo mode is used by default.
 
-## API Endpoints
+## API overview
+
+### Authentication
 
 ```text
 POST /api/auth/login
 GET  /api/auth/me
-GET  /api/students
-GET  /api/students/{studentId}
-POST /api/students
-PUT  /api/students/{studentId}
+```
+
+### Student management
+
+```text
+GET    /api/students
+GET    /api/students/{studentId}
+POST   /api/students
+PUT    /api/students/{studentId}
 DELETE /api/students/{studentId}
-GET  /api/analytics/summary
-GET  /api/analytics/topper
-GET  /api/analytics/at-risk
-GET  /api/analytics/department-averages
-GET  /api/analytics/attendance-performance
+```
+
+### Analytics
+
+```text
+GET /api/analytics/summary
+GET /api/analytics/topper
+GET /api/analytics/at-risk
+GET /api/analytics/department-averages
+GET /api/analytics/attendance-performance
 ```
 
 ## Documentation Mapping
@@ -210,6 +240,52 @@ Database bootstrap script:
 ```text
 sql/schema-and-data.sql
 ```
+
+## Quick evaluation recipe
+
+To verify the project in a few minutes:
+
+1. Start the backend with `mvn spring-boot:run -Dspring-boot.run.profiles=dev`
+2. Start the frontend with `npm run dev`
+3. Open `http://localhost:5173`
+4. Check the dashboard summary cards for student count, average, watchlist, and topper
+5. Open the Students page and verify search plus department filtering
+6. Open the Login page and sign in with `admin / admin123`
+7. Add a new student record and confirm it appears in the table
+8. Edit or delete a record and verify the change is reflected
+9. Open the Analytics page and review topper, branch comparison, attendance chart, and at-risk students
+10. Open Swagger UI at `http://localhost:8080/swagger-ui.html` and verify the documented endpoints
+
+## Current Functional Scope
+
+### Implemented
+
+- admin authentication with JWT
+- student CRUD operations
+- dashboard summary analytics
+- topper endpoint
+- at-risk student list
+- department average analysis
+- attendance vs performance analysis
+- frontend dashboard, student list, login, analytics, and student form pages
+
+### Future Extensions
+
+- CSV import/export
+- downloadable reports
+- pagination
+- audit history
+- role-based access beyond a single admin account
+
+## Troubleshooting
+
+- **Frontend starts but charts or data do not load.** Confirm the backend is running on `http://localhost:8080`, or intentionally use demo mode by leaving the backend off.
+- **MySQL connection fails.** Recheck `spring.datasource.url`, username, password, and whether the `student_performance_db` database exists.
+- **Admin login does not work.** Verify `app.admin.username` and `app.admin.password` in `application.properties`, and ensure the backend has restarted after changes.
+- **Write actions fail with unauthorized or forbidden errors.** Login again and make sure the token is stored in the browser session.
+- **Frontend route refresh fails on static hosting.** This project already uses hash-based routing, which is the correct approach for GitHub Pages.
+- **Frontend works but data resets on refresh.** That means you are in demo/mock mode, not backend-connected mode.
+- **Swagger UI does not open.** Confirm the backend is running and check `springdoc.swagger-ui.path=/swagger-ui.html`.
 
 ## Notes
 
