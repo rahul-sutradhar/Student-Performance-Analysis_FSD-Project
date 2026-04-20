@@ -20,6 +20,8 @@ Built as a college full-stack project with a Java backend, React frontend, SQL b
 - SQL setup script included for MySQL mode
 - **Demo mode with mock data** - Full functionality without backend, perfect for GitHub Pages deployment and testing
 
+---
+
 ## Tech stack summary
 
 | Layer | Technology |
@@ -37,6 +39,7 @@ Built as a college full-stack project with a Java backend, React frontend, SQL b
 | Package managers | Maven, npm |
 | Language versions | Java 17, modern JavaScript |
 
+---
 
 ## Project Structure
 
@@ -50,6 +53,8 @@ Project [College class]/
   data/                       reserved for datasets or exports
   python/                     reserved for future Python analysis
 ```
+
+---
 
 ## Backend Setup
 
@@ -110,6 +115,8 @@ username: admin
 password: admin123
 ```
 
+---
+
 ## Frontend Setup
 
 Prerequisites:
@@ -130,6 +137,7 @@ Open:
 ```text
 http://localhost:5173
 ```
+
 ---
 
 ## GitHub Pages Deployment
@@ -159,6 +167,8 @@ Deployment flow:
 4. Push to `main` to trigger the frontend deployment workflow.
 
 The frontend uses hash-based routing so page refreshes work correctly on GitHub Pages, and demo mode ensures full functionality without the backend.
+
+---
 
 ## Demo Mode (Mock Data)
 
@@ -197,6 +207,25 @@ npm run dev
 
 Wait 5 seconds, and the app will switch to demo mode automatically. On GitHub Pages, demo mode is used by default.
 
+---
+
+## Quick evaluation recipe
+
+To verify the project in a few minutes:
+
+1. Start the backend with `mvn spring-boot:run -Dspring-boot.run.profiles=dev`
+2. Start the frontend with `npm run dev`
+3. Open `http://localhost:5173`
+4. Check the dashboard summary cards for student count, average, watchlist, and topper
+5. Open the Students page and verify search plus department filtering
+6. Open the Login page and sign in with `admin / admin123`
+7. Add a new student record and confirm it appears in the table
+8. Edit or delete a record and verify the change is reflected
+9. Open the Analytics page and review topper, branch comparison, attendance chart, and at-risk students
+10. Open Swagger UI at `http://localhost:8080/swagger-ui.html` and verify the documented endpoints
+
+---
+
 ## API overview
 
 ### Authentication
@@ -226,6 +255,8 @@ GET /api/analytics/department-averages
 GET /api/analytics/attendance-performance
 ```
 
+---
+
 ## Documentation Mapping
 
 Project setup steps are documented in:
@@ -246,20 +277,7 @@ Database bootstrap script:
 sql/schema-and-data.sql
 ```
 
-## Quick evaluation recipe
-
-To verify the project in a few minutes:
-
-1. Start the backend with `mvn spring-boot:run -Dspring-boot.run.profiles=dev`
-2. Start the frontend with `npm run dev`
-3. Open `http://localhost:5173`
-4. Check the dashboard summary cards for student count, average, watchlist, and topper
-5. Open the Students page and verify search plus department filtering
-6. Open the Login page and sign in with `admin / admin123`
-7. Add a new student record and confirm it appears in the table
-8. Edit or delete a record and verify the change is reflected
-9. Open the Analytics page and review topper, branch comparison, attendance chart, and at-risk students
-10. Open Swagger UI at `http://localhost:8080/swagger-ui.html` and verify the documented endpoints
+---
 
 ## Current Functional Scope
 
@@ -282,6 +300,8 @@ To verify the project in a few minutes:
 - audit history
 - role-based access beyond a single admin account
 
+---
+
 ## Troubleshooting
 
 - **Frontend starts but charts or data do not load.** Confirm the backend is running on `http://localhost:8080`, or intentionally use demo mode by leaving the backend off.
@@ -291,6 +311,8 @@ To verify the project in a few minutes:
 - **Frontend route refresh fails on static hosting.** This project already uses hash-based routing, which is the correct approach for GitHub Pages.
 - **Frontend works but data resets on refresh.** That means you are in demo/mock mode, not backend-connected mode.
 - **Swagger UI does not open.** Confirm the backend is running and check `springdoc.swagger-ui.path=/swagger-ui.html`.
+
+---
 
 ## Notes
 
