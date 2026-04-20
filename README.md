@@ -4,9 +4,7 @@ A full-stack student performance analysis system for managing academic records, 
 
 **Student:** Rahul Sutradhar &nbsp;|&nbsp; **Roll Number:** 24057057 &nbsp;|&nbsp; **Batch:** 2024-2027 (LE)
 
-**Subject:** FSD with Java 2026
-
-**Mentor:** Mr. Umar Yakub Solanki, Technical Lead
+**Subject:** FSD with Java 2026 &nbsp;|&nbsp; **Mentor:** Mr. Umar Yakub Solanki, Technical Lead
 
 ---
 
