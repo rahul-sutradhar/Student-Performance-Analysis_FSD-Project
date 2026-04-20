@@ -1,6 +1,10 @@
 # Student Performance Analysis
 
-Full-stack Java FSD project for tracking student academic records, managing attendance and marks, and visualizing performance insights through a Spring Boot + React dashboard.
+A full-stack Java FSD project for tracking student academic records, managing attendance and marks, and visualizing performance insights through a Spring Boot + React dashboard.
+
+Built as a college full-stack project with a Java backend, React frontend, SQL bootstrap script, JWT-based admin access, and a demo-ready fallback mode for static deployment.
+
+---
 
 ## Features
 
@@ -127,6 +131,7 @@ Open:
 http://localhost:5173
 ```
 ---
+
 ## GitHub Pages Deployment
 
 GitHub Pages can host the React frontend only. The Spring Boot backend must be deployed separately on a platform that supports Java applications.
