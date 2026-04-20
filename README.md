@@ -1,6 +1,15 @@
 # Student Performance Analysis
 
-A full-stack Java FSD project for tracking student academic records, managing attendance and marks, and visualizing performance insights through a Spring Boot + React dashboard.
+A full-stack student performance analysis system for managing academic records, attendance, and performance insights. Built as a Java Full Stack Development college capstone project using Spring Boot, React, and MySQL.
+
+**Student:** Rahul Sutradhar &nbsp;|&nbsp; **Roll Number:** 24057057 &nbsp;|&nbsp; **Batch:** FSD with Java 2026
+**Mentor:** Mr. Umar Yakub Solanki, Technical Lead
+
+---
+
+## What this project is
+
+A FSD with Java project for tracking student academic records, managing attendance and marks, and visualizing performance insights through a Spring Boot + React dashboard.
 
 Built as a college full-stack project with a Java backend, React frontend, SQL bootstrap script, JWT-based admin access, and a demo-ready fallback mode for static deployment.
 
