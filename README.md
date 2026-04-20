@@ -12,7 +12,7 @@ Full-stack Java FSD project for tracking student academic records, managing atte
 - Student list with branch and search filters
 - Add, edit, and delete student records
 - Analytics views for topper, at-risk students, department averages, and attendance vs performance
-- Swagger documentation
+- Swagger/OpenAPI documentation
 - SQL setup script included for MySQL mode
 - **Demo mode with mock data** - Full functionality without backend, perfect for GitHub Pages deployment and testing
 
@@ -126,7 +126,7 @@ Open:
 ```text
 http://localhost:5173
 ```
-
+---
 ## GitHub Pages Deployment
 
 GitHub Pages can host the React frontend only. The Spring Boot backend must be deployed separately on a platform that supports Java applications.
